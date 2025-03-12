@@ -66,6 +66,9 @@
         </div>
     </div>
 
+    <!-- Add this near the top of the file, after the filters section -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Categories section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8">
@@ -133,16 +136,20 @@
                                 </svg>
                                 En stock ({{ $plant->stock }})
                             </span>
-                            <form data-plant-id="{{ $plant->id }}" class="add-to-cart-form">
-                                <input type="hidden" name="quantity" value="1">
-                                <button type="submit" 
-                                        data-add-to-cart
-                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                                    <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                    Ajouter au panier
-                                </button>
+                            <form data-add-to-cart data-plant-id="{{ $plant->id }}" class="mt-4">
+                                <div class="flex items-center gap-2">
+                                    <input type="number" 
+                                           name="quantity" 
+                                           min="1" 
+                                           max="{{ $plant->stock }}" 
+                                           value="1" 
+                                           class="w-20 rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500">
+                                    <button type="submit" 
+                                            class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                        <i class="fas fa-shopping-cart mr-2"></i>
+                                        Ajouter au panier
+                                    </button>
+                                </div>
                             </form>
                         @else
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">

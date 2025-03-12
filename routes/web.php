@@ -13,6 +13,11 @@ use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\NurseryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -82,12 +87,6 @@ Route::prefix('nursery')->name('nursery.')->group(function () {
     Route::get('/guide', [NurseryController::class, 'guide'])->name('guide');
     Route::get('/plants/{plant}', [NurseryController::class, 'show'])->name('show');
     Route::post('/quote', [NurseryController::class, 'requestQuote'])->name('quote');
-    
-    // Orders routes (authenticated users only)
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/orders', [NurseryController::class, 'orders'])->name('orders');
-        Route::get('/orders/{order}', [NurseryController::class, 'orderDetails'])->name('order.details');
-    });
 });
 
 // Contact Routes
@@ -101,3 +100,28 @@ Route::prefix('cart')->name('cart.')->group(function () {
     Route::patch('/{cart}', [CartController::class, 'update'])->name('update');
     Route::delete('/{cart}', [CartController::class, 'remove'])->name('remove');
 });
+
+// Orders Routes (authenticated users only)
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('orders')->name('orders.')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('index');
+        Route::post('/', [OrderController::class, 'store'])->name('store');
+        Route::get('/{order}', [OrderController::class, 'show'])->name('show');
+    });
+});
+
+// Profile & Settings Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+});
+
+// Authentication Routes
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);

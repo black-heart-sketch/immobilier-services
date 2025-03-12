@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<x-page-banner 
-    title="BTP"
-    description="Solutions complètes pour vos projets de construction et de travaux publics."
-    image="images/btp/hero-bg.jpg"
-/>
+
 
 <div class="bg-gray-50">
     <!-- Hero Section -->
