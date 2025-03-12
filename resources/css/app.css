@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    }
+}
+
+@keyframes fadeOutUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeInBottomRight {
+    from {
+        opacity: 0;
+        transform: translate(20px, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+/* Smooth blur transitions */
+@layer utilities {
+    .backdrop-blur-transition {
+        transition: backdrop-filter 0.3s ease-in-out;
+    }
+}
+
+/* Custom animation for image zoom */
+@keyframes subtle-zoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* Hover effect for service cards */
+.service-card-hover {
+    transition: all 0.3s ease-in-out;
+}
+
+.service-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Leaflet Map Styles */
+.custom-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    min-width: 200px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: #4B5563;
+    padding: 8px;
+}
