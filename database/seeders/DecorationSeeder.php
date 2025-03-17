@@ -17,7 +17,7 @@ class DecorationSeeder extends Seeder
                 'title' => 'Design d\'Intérieur',
                 'description' => 'Conception complète d\'espaces intérieurs adaptés à votre style de vie',
                 'icon' => 'fa-pencil-ruler',
-                'image' => 'images/decoration/services/interior-design.jpg',
+                'image' => 'images/btp/projects/IMG-20240812-WA0128.jpg',
                 'features' => [
                     'Plans et rendus 3D',
                     'Sélection des matériaux',
@@ -30,7 +30,7 @@ class DecorationSeeder extends Seeder
                 'title' => 'Ameublement',
                 'description' => 'Sélection et agencement de mobilier pour créer des espaces fonctionnels et esthétiques',
                 'icon' => 'fa-couch',
-                'image' => 'images/decoration/services/furniture.jpg',
+                'image' => 'images/btp/projects/IMG-20240812-WA0128.jpg',
                 'features' => [
                     'Mobilier sur mesure',
                     'Conseil en agencement',
@@ -43,7 +43,7 @@ class DecorationSeeder extends Seeder
                 'title' => 'Rénovation Décorative',
                 'description' => 'Transformation complète de vos espaces avec des solutions décoratives innovantes',
                 'icon' => 'fa-paint-roller',
-                'image' => 'images/decoration/services/renovation.jpg',
+                'image' => 'images/btp/projects/IMG-20240812-WA0128.jpg',
                 'features' => [
                     'Peinture décorative',
                     'Revêtements muraux',

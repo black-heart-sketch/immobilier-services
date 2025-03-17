@@ -36,9 +36,9 @@ class HomeController extends Controller
                 'description' => 'Trouvez le terrain idéal pour votre projet',
                 'link' => '/terrains',
                 'images' => [
-                    'images/services/terrain-1.jpg',
-                    'images/services/terrain-2.jpg',
-                    'images/services/terrain-3.jpg'
+                    'images/properties/terrain-1.jpg',
+                    'images/propertiesterrain-2.jpg',
+                    'images/properties/terrain-3.jpg'
                 ],
                 'stats' => ['200+ Terrains', '100% Légal', 'Prix Compétitifs'],
                 'features' => ['Terrains constructibles', 'Titres fonciers', 'Assistance administrative']
@@ -49,9 +49,9 @@ class HomeController extends Controller
                 'description' => 'Services de topographie professionnels',
                 'link' => '/topographie',
                 'images' => [
-                    'images/services/topo-1.jpg',
-                    'images/services/topo-2.jpg',
-                    'images/services/topo-3.jpg'
+                    'images/properties/topo-1.jpg',
+                    'images/properties/topo-2.jpg',
+                    'images/properties/topo-3.jpg'
                 ],
                 'stats' => ['500+ Projets', 'Haute Précision', 'Équipe Experte'],
                 'features' => ['Bornage', 'Levés topographiques', 'Plans cadastraux']
@@ -75,9 +75,9 @@ class HomeController extends Controller
                 'description' => 'Design d\'intérieur personnalisé',
                 'link' => '/decoration',
                 'images' => [
-                    'images/services/decoration-1.jpg',
-                    'images/services/decoration-2.jpg',
-                    'images/services/decoration-3.jpg'
+                    'images/services/contruction3.jpg',
+                    'images/services/contruction2.jpg',
+                    'images/services/contruction1.jpg'
                 ],
                 'stats' => ['1000+ Designs', 'Style Unique', 'Satisfaction 100%'],
                 'features' => ['Design intérieur', 'Aménagement', 'Conseil déco']

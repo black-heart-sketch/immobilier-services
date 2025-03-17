@@ -4,7 +4,7 @@
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center space-x-4">
                 <a href="mailto:contact@example.com" class="text-sm hover:text-primary-200">
-                    <i class="fas fa-envelope mr-2"></i>contact@example.com
+                    <i class="fas fa-envelope mr-2"></i>bikeledon@gmail.com
                 </a>
                 <a href="tel:+123456789" class="text-sm hover:text-primary-200">
                     <i class="fas fa-phone mr-2"></i>+123 456 789

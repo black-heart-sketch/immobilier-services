@@ -18,6 +18,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\PropertyController as AdminPropertyController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -125,3 +127,22 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
+
+// Admin Routes
+Route::prefix('admin')
+    ->name('admin.')
+    // Comment out middleware for development
+    // ->middleware(['auth', 'admin'])
+    ->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/terrains', [AdminPropertyController::class, 'index'])->name('terrains');
+        Route::get('/maisons', [AdminController::class, 'maisons'])->name('maisons');
+        Route::get('/topographie', [AdminController::class, 'topographie'])->name('topographie');
+        Route::get('/btp', [AdminController::class, 'btp'])->name('btp');
+        Route::get('/decoration', [AdminController::class, 'decoration'])->name('decoration');
+        Route::get('/location-engins', [AdminController::class, 'locationEngins'])->name('location-engins');
+        Route::get('/pepinieres', [AdminController::class, 'pepinieres'])->name('pepinieres');
+        Route::get('/account', [AdminController::class, 'account'])->name('account');
+        Route::put('/profile', [AdminController::class, 'updateProfile'])->name('profile.update');
+        Route::put('/password', [AdminController::class, 'updatePassword'])->name('password.update');
+    });

@@ -13,7 +13,7 @@
         <div class="relative container mx-auto px-4">
             <div class="max-w-3xl">
                 <h1 class="text-4xl font-bold text-white mb-6">
-                    Location d'Engins de Construction
+                    Location d'Engins
                 </h1>
                 <p class="text-xl text-gray-300 mb-8">
                     Une large gamme d'équipements professionnels pour vos chantiers
