@@ -40,15 +40,15 @@
                 <ul class="space-y-2 text-gray-400">
                     <li class="flex items-start">
                         <i class="fas fa-map-marker-alt mt-1.5 mr-3"></i>
-                        <span>123 Rue Example, Ville, Pays</span>
+                        <span>carefour essomba, Yaoundé, Cameroun</span>
                     </li>
                     <li class="flex items-center">
                         <i class="fas fa-phone mr-3"></i>
-                        <span>+123 456 789</span>
+                        <span>+237 656103732</span>
                     </li>
                     <li class="flex items-center">
                         <i class="fas fa-envelope mr-3"></i>
-                        <span>contact@example.com</span>
+                        <span>bikeledon@gmail.com</span>
                     </li>
                 </ul>
             </div>

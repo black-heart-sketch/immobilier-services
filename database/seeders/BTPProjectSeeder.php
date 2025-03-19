@@ -12,55 +12,55 @@ class BTPProjectSeeder extends Seeder
     {
         $projects = [
             [
-                'title' => 'Villa Moderne à Cocody',
+                'title' => 'Villa Moderne à Bastos',
                 'type' => 'construction',
-                'description' => 'Construction d\'une villa moderne de 400m² avec piscine et jardin paysager',
+                'description' => 'Construction d\'une villa moderne de 400m² avec piscine et jardin paysager dans le quartier diplomatique',
                 'before_image' => 'images/btp/btp1.jpg',
                 'after_image' => 'images/btp/btp1.jpg',
-                'location' => 'Cocody, Abidjan',
+                'location' => 'Bastos, Yaoundé',
                 'completion_date' => '2024-01-15',
                 'surface_area' => 400,
                 'cost' => 150000000,
                 'testimonials' => [
                     [
-                        'client_name' => 'M. Koné',
-                        'content' => 'Un travail exceptionnel, notre villa est exactement comme nous l\'avions imaginée.',
+                        'client_name' => 'M. Kamdem',
+                        'content' => 'Un travail exceptionnel, notre villa est exactement comme nous l\'avions imaginée. L\'équipe a fait preuve d\'un grand professionnalisme.',
                         'rating' => 5
                     ]
                 ]
             ],
             [
-                'title' => 'Rénovation Appartement Plateau',
+                'title' => 'Rénovation Appartement Bonapriso',
                 'type' => 'renovation',
-                'description' => 'Rénovation complète d\'un appartement de 120m² avec modernisation des installations',
+                'description' => 'Rénovation complète d\'un appartement de 120m² avec modernisation des installations et vue sur le Wouri',
                 'before_image' => 'images/btp/btp2.jpg',
                 'after_image' => 'images/btp/btp2.jpg',
-                'location' => 'Plateau, Abidjan',
+                'location' => 'Bonapriso, Douala',
                 'completion_date' => '2024-02-20',
                 'surface_area' => 120,
                 'cost' => 45000000,
                 'testimonials' => [
                     [
-                        'client_name' => 'Mme Bamba',
-                        'content' => 'La transformation est incroyable, c\'est comme un nouvel appartement.',
+                        'client_name' => 'Mme Ngo',
+                        'content' => 'La transformation est incroyable, c\'est comme un nouvel appartement. La vue sur le fleuve est maintenant parfaitement mise en valeur.',
                         'rating' => 5
                     ]
                 ]
             ],
             [
-                'title' => 'Immeuble Commercial Marcory',
+                'title' => 'Immeuble Commercial Akwa',
                 'type' => 'construction',
-                'description' => 'Construction d\'un immeuble de bureaux de 1200m² sur 4 étages',
+                'description' => 'Construction d\'un immeuble de bureaux de 1200m² sur 4 étages au cœur du quartier des affaires',
                 'before_image' => 'images/btp/btp3.jpg',
                 'after_image' => 'images/btp/btp3.jpg',
-                'location' => 'Marcory, Abidjan',
+                'location' => 'Akwa, Douala',
                 'completion_date' => '2023-12-10',
                 'surface_area' => 1200,
                 'cost' => 450000000,
                 'testimonials' => [
                     [
-                        'client_name' => 'Cabinet KLM',
-                        'content' => 'Un projet livré dans les délais avec une qualité exceptionnelle.',
+                        'client_name' => 'Cabinet MNP',
+                        'content' => 'Un projet livré dans les délais avec une qualité exceptionnelle. L\'emplacement stratégique en fait un investissement remarquable.',
                         'rating' => 5
                     ]
                 ]
