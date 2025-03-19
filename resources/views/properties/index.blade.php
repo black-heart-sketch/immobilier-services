@@ -4,7 +4,7 @@
 <x-page-banner 
     title="Propriétés"
     description="Découvrez notre sélection de propriétés exceptionnelles. Des terrains aux maisons, trouvez le bien qui vous correspond."
-    image="images/properties/hero-bg.jpg"
+    image="images/properties/maison-4.jpg"
 />
 
 <div class="bg-gray-50 min-h-screen py-12">
@@ -74,15 +74,17 @@
                         <!-- Features -->
                         <div class="mb-4 space-y-2">
                             <div class="flex flex-wrap gap-2">
-                                @foreach(array_slice($property->features, 0, 3) as $feature)
-                                    <span class="inline-flex items-center bg-gray-100 rounded-full px-2.5 py-0.5 text-xs font-medium text-gray-700">
-                                        {{ $feature }}
-                                    </span>
-                                @endforeach
-                                @if(count($property->features) > 3)
-                                    <span class="inline-flex items-center bg-gray-100 rounded-full px-2.5 py-0.5 text-xs font-medium text-gray-700">
-                                        +{{ count($property->features) - 3 }}
-                                    </span>
+                                @if(isset($property->features) && is_array($property->features))
+                                    @foreach(array_slice($property->features, 0, 3) as $feature)
+                                        <span class="inline-flex items-center bg-gray-100 rounded-full px-2.5 py-0.5 text-xs font-medium text-gray-700">
+                                            {{ $feature }}
+                                        </span>
+                                    @endforeach
+                                    @if(count($property->features) > 3)
+                                        <span class="inline-flex items-center bg-gray-100 rounded-full px-2.5 py-0.5 text-xs font-medium text-gray-700">
+                                            +{{ count($property->features) - 3 }}
+                                        </span>
+                                    @endif
                                 @endif
                             </div>
                         </div>

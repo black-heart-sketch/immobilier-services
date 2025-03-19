@@ -3,28 +3,28 @@
 @section('content')
 <div class="bg-gray-50">
     <!-- Hero Section -->
-    <div class="relative py-16 bg-gray-900">
+    <div class="relative py-16 bg-gray-900 h-[90vh]">
         <div class="absolute inset-0">
-            <img src="{{ asset('images/equipment/hero.jpg') }}" 
+            <img src="{{ asset('images/engines/hero.jpeg') }}" 
                  alt="Location d'Engins" 
-                 class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/50"></div>
+                 class="w-full h-full object-cover opacity-70">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900/60 to-gray-900/30"></div>
         </div>
-        <div class="relative container mx-auto px-4">
+        <div class="relative container mx-auto px-4 h-full flex items-center">
             <div class="max-w-3xl">
-                <h1 class="text-4xl font-bold text-white mb-6">
+                <h1 class="text-4xl font-bold text-white mb-6 drop-shadow-lg">
                     Location d'Engins
                 </h1>
-                <p class="text-xl text-gray-300 mb-8">
+                <p class="text-xl text-white mb-8 drop-shadow-md">
                     Une large gamme d'équipements professionnels pour vos chantiers
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#equipment-list" 
-                       class="bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-colors">
+                       class="bg-primary-600/90 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-colors">
                         Voir nos équipements
                     </a>
                     <a href="#contact" 
-                       class="bg-white text-gray-900 px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">
+                       class="bg-white/90 text-gray-900 px-8 py-4 rounded-lg hover:bg-white transition-colors">
                         Nous contacter
                     </a>
                 </div>

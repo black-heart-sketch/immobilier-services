@@ -9,8 +9,8 @@
         <div class="absolute inset-0">
             <img src="{{ asset('images/btp/hero.jpg') }}" 
                  alt="BTP Construction" 
-                 class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/50"></div>
+                 class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900/30 to-gray-900/20"></div>
         </div>
         <div class="relative h-full flex items-center">
             <div class="container mx-auto px-4">
@@ -18,11 +18,11 @@
                     <span class="inline-block bg-primary-600 text-white text-sm px-4 py-1 rounded-full mb-4">
                         Expertise BTP
                     </span>
-                    <h1 class="text-5xl font-bold text-white mb-6">
+                    <h1 class="text-5xl font-bold text-white mb-6 text-shadow">
                         Construction et Rénovation<br>
                         de Qualité Supérieure
                     </h1>
-                    <p class="text-xl text-gray-300 mb-8">
+                    <p class="text-xl text-white mb-8 text-shadow">
                         Des solutions sur mesure pour tous vos projets de construction,<br>
                         de la conception à la réalisation
                     </p>
@@ -96,11 +96,11 @@
                                  alt="Après" 
                                  class="absolute inset-0 w-full h-full object-cover">
                             <div class="absolute inset-0 flex items-center justify-center">
-                                <button @mouseenter="showAfter = true" 
+                                <!-- <button @mouseenter="showAfter = true" 
                                         @mouseleave="showAfter = false"
                                         class="bg-white/90 text-gray-900 px-4 py-2 rounded-lg text-sm font-medium">
                                     Voir avant/après
-                                </button>
+                                </button> -->
                             </div>
                         </div>
 
@@ -112,10 +112,10 @@
                                     <i class="far fa-calendar-alt mr-2"></i>
                                     {{ $project->completion_date->format('M Y') }}
                                 </span>
-                                <a href="#" class="text-primary-600 hover:text-primary-700">
+                                <!-- <a href="#" class="text-primary-600 hover:text-primary-700">
                                     En savoir plus
                                     <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
@@ -502,4 +502,10 @@
         </div>
     </div>
 </div>
+
+<style>
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+</style>
 @endsection 

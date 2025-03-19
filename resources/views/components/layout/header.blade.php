@@ -11,8 +11,8 @@
                 </a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="#" class="hover:text-primary-200"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-primary-200"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/15Wvy5VTP5/?mibextid=wwXIfr" class="hover:text-primary-200"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/wise_trust_group?igsh=MW1lNmpydHpyNmp2ZQ%3D%3D&utm_source=qr" class="hover:text-primary-200"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="hover:text-primary-200"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <!-- Logo -->
             <div class="flex-shrink-0 w-48">
                 <a href="{{ route('home') }}" class="flex items-center">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto">
+                    <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-16 w-32 object-contain" width="128" height="64">
                 </a>
             </div>
 

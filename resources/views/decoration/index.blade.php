@@ -5,32 +5,32 @@
     <!-- Hero Section -->
     <div class="relative h-[80vh] bg-gray-900 overflow-hidden">
         <div class="absolute inset-0">
-            <img src="{{ asset('images/decoration/hero.jpg') }}" 
+            <img src="{{ asset('images/services/living-room-interior.jpg') }}" 
                  alt="Décoration Intérieure" 
-                 class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-900/50"></div>
+                 class="w-full h-full object-cover opacity-70">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900/60 to-gray-900/30"></div>
         </div>
         <div class="relative h-full flex items-center">
             <div class="container mx-auto px-4">
                 <div class="max-w-3xl">
-                    <span class="inline-block bg-primary-600 text-white text-sm px-4 py-1 rounded-full mb-4">
+                    <span class="inline-block bg-primary-600/90 text-white text-sm px-4 py-1 rounded-full mb-4">
                         Design d'Intérieur
                     </span>
-                    <h1 class="text-5xl font-bold text-white mb-6">
+                    <h1 class="text-5xl font-bold text-white mb-6 drop-shadow-lg">
                         Transformez votre espace<br>
                         en un lieu unique
                     </h1>
-                    <p class="text-xl text-gray-300 mb-8">
+                    <p class="text-xl text-white mb-8 drop-shadow-md">
                         Des solutions créatives pour sublimer votre intérieur,<br>
                         du conseil à la réalisation
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <a href="#services" 
-                           class="bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-colors">
+                           class="bg-primary-600/90 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-colors">
                             Découvrir nos services
                         </a>
                         <a href="#consultation" 
-                           class="bg-white text-gray-900 px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors">
+                           class="bg-white/90 text-gray-900 px-8 py-4 rounded-lg hover:bg-white transition-colors">
                             Consultation gratuite
                         </a>
                     </div>

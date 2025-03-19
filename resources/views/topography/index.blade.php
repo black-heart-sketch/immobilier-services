@@ -5,11 +5,11 @@
     <!-- Hero Section with Parallax -->
     <div class="relative overflow-hidden bg-primary-900 h-[80vh] flex items-center" x-data="{ scroll: 0 }" @scroll.window="scroll = window.pageYOffset">
         <div class="absolute inset-0">
-            <img src="{{ asset('images/topography/hero.jpg') }}" 
+            <img src="{{ asset('images/topography/topo11.jpg') }}" 
                  alt="Topographie" 
-                 class="w-full h-full object-cover opacity-30"
+                 class="w-full h-full object-cover opacity-50"
                  :style="{ transform: `translateY(${scroll * 0.5}px)` }">
-            <div class="absolute inset-0 bg-gradient-to-b from-primary-900/50 to-primary-900/90"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-primary-900/30 to-primary-900/70"></div>
         </div>
         <div class="relative container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
@@ -138,22 +138,36 @@
                                   step: 1,
                                   isSubmitting: false,
                                   success: false,
+                                  error: null,
+                                  
+                                  nextStep() {
+                                      if (this.step < 4) this.step++;
+                                  },
+                                  
+                                  prevStep() {
+                                      if (this.step > 1) this.step--;
+                                  },
+                                  
                                   async submitForm() {
                                       if (this.isSubmitting) return;
                                       
                                       this.isSubmitting = true;
+                                      this.error = null;
                                       
                                       try {
-                                          const response = await fetch('{{ route("topography.quote") }}', {
+                                          const response = await fetch('{{ route('topography.quote') }}', {
                                               method: 'POST',
                                               headers: {
                                                   'Content-Type': 'application/json',
-                                                  'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                                  'X-CSRF-TOKEN': document.querySelector('meta[name=\'csrf-token\']').content
                                               },
                                               body: JSON.stringify(this.formData)
                                           });
                                           
-                                          if (!response.ok) throw new Error('Network response was not ok');
+                                          if (!response.ok) {
+                                              const errorData = await response.json();
+                                              throw new Error(errorData.message || 'Une erreur est survenue');
+                                          }
                                           
                                           const data = await response.json();
                                           
@@ -175,7 +189,12 @@
                                           
                                       } catch (error) {
                                           console.error('Error:', error);
-                                          alert('Une erreur est survenue. Veuillez réessayer.');
+                                          this.error = error.message || 'Une erreur est survenue. Veuillez réessayer.';
+                                          
+                                          // Hide error message after 5 seconds
+                                          setTimeout(() => {
+                                              this.error = null;
+                                          }, 5000);
                                       } finally {
                                           this.isSubmitting = false;
                                       }
@@ -323,7 +342,7 @@
                             <div class="flex justify-between mt-8">
                                 <button type="button"
                                         x-show="step > 1"
-                                        @click="step--"
+                                        @click="prevStep()"
                                         class="flex items-center px-6 py-3 text-primary-600 hover:text-primary-700 transition-colors">
                                     <i class="fas fa-arrow-left mr-2"></i>
                                     Précédent
@@ -331,7 +350,7 @@
                                 
                                 <button type="button"
                                         x-show="step < 4"
-                                        @click="step++"
+                                        @click="nextStep()"
                                         class="ml-auto flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
                                     Suivant
                                     <i class="fas fa-arrow-right ml-2"></i>
@@ -340,7 +359,7 @@
                                 <button type="submit"
                                         x-show="step === 4"
                                         :disabled="isSubmitting"
-                                        class="ml-auto flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                        class="ml-auto flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
                                     <span x-show="!isSubmitting">
                                         <i class="fas fa-paper-plane mr-2"></i>
                                         Envoyer la demande
@@ -357,6 +376,7 @@
 
                 <!-- Success Message -->
                 <div x-show="success"
+                     x-cloak
                      x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 transform translate-y-4"
                      x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -364,8 +384,22 @@
                     <i class="fas fa-check-circle mr-2"></i>
                     Votre demande a été envoyée avec succès !
                 </div>
+                
+                <!-- Error Message -->
+                <div x-show="error"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform translate-y-4"
+                     x-transition:enter-end="opacity-100 transform translate-y-0"
+                     class="fixed bottom-4 right-4 bg-red-500 text-white px-6 py-3 rounded-xl shadow-lg flex items-center">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span x-text="error"></span>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    [x-cloak] { display: none !important; }
+</style>
 @endsection 

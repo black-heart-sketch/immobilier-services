@@ -4,7 +4,7 @@
 <x-page-banner 
     title="Pépinière"
     description="Découvrez notre sélection de plantes et d'arbres pour embellir votre espace. Des espèces locales aux plantes exotiques, trouvez la verdure qui vous correspond."
-    image="images/nursery/hero-bg.jpg"
+    image="images/plants/row-fresh-green-plants-pot.jpg"
 />
 
 <div class="bg-white">

@@ -11,113 +11,91 @@ class EquipmentSeeder extends Seeder
     {
         $equipment = [
             [
-                'name' => 'Pelle Hydraulique CAT 320',
+                'name' => 'Pelle Hydraulique',
                 'type' => 'excavator',
-                'description' => 'Pelle hydraulique puissante idéale pour les travaux d\'excavation et de terrassement',
+                'description' => 'Pelle hydraulique puissante pour les travaux de terrassement, excavation et démolition. Équipée d\'un système hydraulique performant et d\'une cabine ergonomique.',
                 'specifications' => [
-                    'Poids opérationnel' => '20.000 kg',
-                    'Puissance moteur' => '121 kW',
-                    'Capacité du godet' => '1.2 m³',
-                    'Profondeur de fouille' => '6.7 m',
-                    'Portée maximale' => '9.9 m'
+                    'Type' => 'Excavatrice',
+                    'Système' => 'Bras articulé avec godet',
+                    'Mobilité' => 'Chenilles tout-terrain',
+                    'Cabine' => 'Fermée et climatisée',
+                    'Usage' => 'Terrassement, excavation, démolition'
                 ],
                 'daily_rate' => 350000,
                 'weekly_rate' => 2100000,
                 'monthly_rate' => 8000000,
-                'image' => 'images/equipment/cat-320.jpg',
+                'image' => 'images/engines/pelle.jpeg',
                 'status' => 'available',
                 'current_location' => [
-                    'lat' => 5.3484,
-                    'lng' => -4.0126,
-                    'address' => 'Zone Industrielle de Yopougon, Abidjan'
+                    'lat' => 3.8667,
+                    'lng' => 11.5167,
+                    'address' => 'Yaoundé, Cameroun'
                 ]
             ],
             [
-                'name' => 'Chargeuse sur Pneus Volvo L120H',
-                'type' => 'loader',
-                'description' => 'Chargeuse polyvalente pour le chargement et la manutention de matériaux',
+                'name' => 'Rétrochargeuse',
+                'type' => 'backhoe',
+                'description' => 'Machine polyvalente équipée d\'une pelleteuse à l\'arrière et d\'une chargeuse à l\'avant, idéale pour les travaux de terrassement et le transport de matériaux.',
                 'specifications' => [
-                    'Poids opérationnel' => '18.700 kg',
-                    'Puissance moteur' => '147 kW',
-                    'Capacité du godet' => '3.0 m³',
-                    'Charge de basculement' => '12.400 kg',
-                    'Hauteur de déversement' => '2.9 m'
+                    'Type' => 'Backhoe Loader',
+                    'Équipement' => 'Pelleteuse arrière et chargeuse avant',
+                    'Mobilité' => 'Roues adaptées aux chantiers',
+                    'Cabine' => 'Fermée avec visibilité panoramique',
+                    'Usage' => 'Terrassement, nivellement, transport'
                 ],
                 'daily_rate' => 300000,
                 'weekly_rate' => 1800000,
                 'monthly_rate' => 7000000,
-                'image' => 'images/equipment/volvo-l120h.jpg',
+                'image' => 'images/engines/retro.jpeg',
                 'status' => 'available',
                 'current_location' => [
-                    'lat' => 5.3167,
-                    'lng' => -4.0333,
-                    'address' => 'Port Autonome d\'Abidjan'
+                    'lat' => 3.8667,
+                    'lng' => 11.5167,
+                    'address' => 'Yaoundé, Cameroun'
                 ]
             ],
             [
-                'name' => 'Grue Mobile Liebherr LTM 1060',
-                'type' => 'crane',
-                'description' => 'Grue tout-terrain pour les travaux de levage en milieu urbain',
+                'name' => 'Chargeuse sur Pneus',
+                'type' => 'loader',
+                'description' => 'Chargeuse puissante conçue pour le chargement et le transport de matériaux en vrac. Équipée de roues larges pour une excellente stabilité.',
                 'specifications' => [
-                    'Capacité de levage max' => '60 tonnes',
-                    'Hauteur de levage max' => '48 m',
-                    'Longueur de flèche' => '40 m',
-                    'Nombre d\'essieux' => '3',
-                    'Contrepoids total' => '12.8 tonnes'
+                    'Type' => 'Wheel Loader',
+                    'Équipement' => 'Grande pelle frontale',
+                    'Mobilité' => 'Roues larges tout-terrain',
+                    'Moteur' => 'Haute puissance',
+                    'Cabine' => 'Ergonomique avec commandes hydrauliques'
                 ],
-                'daily_rate' => 500000,
-                'weekly_rate' => 3000000,
-                'monthly_rate' => 11000000,
-                'image' => 'images/equipment/liebherr-ltm1060.jpg',
-                'status' => 'rented',
+                'daily_rate' => 320000,
+                'weekly_rate' => 1900000,
+                'monthly_rate' => 7500000,
+                'image' => 'images/engines/char.jpeg',
+                'status' => 'available',
                 'current_location' => [
-                    'lat' => 5.3600,
-                    'lng' => -3.9667,
-                    'address' => 'Chantier Cocody, Abidjan'
+                    'lat' => 3.8667,
+                    'lng' => 11.5167,
+                    'address' => 'Yaoundé, Cameroun'
                 ]
             ],
             [
-                'name' => 'Camion Benne MAN TGS 33.420',
-                'type' => 'truck',
-                'description' => 'Camion benne robuste pour le transport de matériaux en vrac',
+                'name' => 'Pelle sur Chenilles',
+                'type' => 'excavator',
+                'description' => 'Excavatrice de chantier robuste pour les travaux de terrassement et creusement profond. Excellente stabilité grâce aux chenilles.',
                 'specifications' => [
-                    'Charge utile' => '20 tonnes',
-                    'Volume de benne' => '16 m³',
-                    'Puissance moteur' => '420 ch',
-                    'Nombre d\'essieux' => '3',
-                    'Type de benne' => 'Benne arrière'
+                    'Type' => 'Excavatrice de chantier',
+                    'Équipement' => 'Long bras avec godet robuste',
+                    'Mobilité' => 'Chenilles pour terrains instables',
+                    'Stabilité' => 'Renforcée pour grands travaux',
+                    'Cabine' => 'Commandes précises et ergonomiques'
                 ],
-                'daily_rate' => 200000,
-                'weekly_rate' => 1200000,
-                'monthly_rate' => 4500000,
-                'image' => 'images/equipment/man-tgs.jpg',
+                'daily_rate' => 380000,
+                'weekly_rate' => 2300000,
+                'monthly_rate' => 8500000,
+                'image' => 'images/engines/pellc.jpeg',
                 'status' => 'available',
                 'current_location' => [
-                    'lat' => 5.3484,
-                    'lng' => -4.0126,
-                    'address' => 'Zone Industrielle de Yopougon, Abidjan'
-                ]
-            ],
-            [
-                'name' => 'Compacteur HAMM H11i',
-                'type' => 'compactor',
-                'description' => 'Compacteur monocylindre pour les travaux de terrassement',
-                'specifications' => [
-                    'Poids opérationnel' => '11.300 kg',
-                    'Largeur de travail' => '2.140 mm',
-                    'Force centrifuge' => '256 kN',
-                    'Amplitude' => '1.9/0.9 mm',
-                    'Fréquence de vibration' => '30/40 Hz'
-                ],
-                'daily_rate' => 250000,
-                'weekly_rate' => 1500000,
-                'monthly_rate' => 5500000,
-                'image' => 'images/equipment/hamm-h11i.jpg',
-                'status' => 'available',
-                'current_location' => [
-                    'lat' => 5.3167,
-                    'lng' => -4.0333,
-                    'address' => 'Chantier Autoroute, Abidjan'
+                    'lat' => 3.8667,
+                    'lng' => 11.5167,
+                    'address' => 'Yaoundé, Cameroun'
                 ]
             ]
         ];

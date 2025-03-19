@@ -12,11 +12,8 @@
                 <p class="mt-2 text-sm text-gray-700">Liste de tous les terrains disponibles à la vente.</p>
             </div>
             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                <button type="button" 
-                        onclick="document.getElementById('addModal').classList.remove('hidden');"
-                        class="inline-flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto">
-                    <i class="fas fa-plus mr-2"></i>
-                    Ajouter un terrain
+                <button type="button" onclick="document.getElementById('addModal').classList.remove('hidden');">
+                    Add Property
                 </button>
             </div>
         </div>
@@ -71,6 +68,7 @@
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Surface</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Prix</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Statut</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Référence</th>
                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-semibold text-gray-900">
                                 Actions
                             </th>
@@ -81,12 +79,21 @@
                         <tr>
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-900">{{ $property->id }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm">
-                                @if($property->image)
-                                <img src="{{ asset($property->image) }}" alt="{{ $property->title }}" class="h-12 w-12 rounded-md object-cover">
+                                @if($property->images)
+                                    @php
+                                        $images = is_string($property->images) ? json_decode($property->images, true) : $property->images;
+                                    @endphp
+                                    @if(is_array($images) && count($images) > 0)
+                                        <img src="{{ asset($images[0]) }}" alt="{{ $property->title }}" class="h-12 w-12 rounded-md object-cover">
+                                    @else
+                                        <div class="h-12 w-12 rounded-md bg-gray-100 flex items-center justify-center">
+                                            <i class="fas fa-map text-gray-400"></i>
+                                        </div>
+                                    @endif
                                 @else
-                                <div class="h-12 w-12 rounded-md bg-gray-100 flex items-center justify-center">
-                                    <i class="fas fa-map text-gray-400"></i>
-                                </div>
+                                    <div class="h-12 w-12 rounded-md bg-gray-100 flex items-center justify-center">
+                                        <i class="fas fa-map text-gray-400"></i>
+                                    </div>
                                 @endif
                             </td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $property->title }}</td>
@@ -101,11 +108,12 @@
                                        ($property->status === 'pending' ? 'En attente' : 'Vendu') }}
                                 </span>
                             </td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">{{ $property->reference ?? 'N/A' }}</td>
                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium">
-                                <button onclick="document.getElementById('editModal').classList.remove('hidden'); document.getElementById('editForm').action = '/admin/properties/{{ $property->id }}';" class="text-primary-600 hover:text-primary-900 mr-3">
+                                <button onclick="openEditModal({{ $property->id }})" class="text-primary-600 hover:text-primary-900 mr-3">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button onclick="document.getElementById('deleteModal').classList.remove('hidden'); document.getElementById('deleteForm').action = '/admin/properties/{{ $property->id }}';" class="text-red-600 hover:text-red-900">
+                                <button onclick="openDeleteModal({{ $property->id }})" class="text-red-600 hover:text-red-900">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
@@ -123,9 +131,9 @@
     </div>
 </div>
 
-<!-- Using the modal component -->
+<!-- Add Modal -->
 <x-modal id="addModal" title="Ajouter un terrain">
-    <form id="addTerrainForm" action="{{ route('admin.terrains') }}" method="POST" enctype="multipart/form-data">
+    <form id="addForm" action="{{ route('admin.properties.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 gap-4">
             <div>
@@ -149,8 +157,12 @@
                 <input type="number" name="price" id="price" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
             <div>
-                <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                <input type="file" name="image" id="image" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100">
+                <label for="reference" class="block text-sm font-medium text-gray-700">Référence</label>
+                <input type="text" name="reference" id="reference" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+            <div>
+                <label for="image" class="block text-sm font-medium text-gray-700">Images</label>
+                <input type="file" name="images[]" id="image" multiple class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100">
             </div>
             <input type="hidden" name="type" value="terrain">
             <input type="hidden" name="status" value="available">
@@ -161,12 +173,13 @@
         <button type="button" onclick="document.getElementById('addModal').classList.add('hidden');" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
             Annuler
         </button>
-        <button type="submit" form="addTerrainForm" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+        <button type="submit" form="addForm" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
             Ajouter
         </button>
     </x-slot>
 </x-modal>
 
+<!-- Edit Modal -->
 <x-modal id="editModal" title="Modifier le terrain">
     <form id="editForm" method="POST" enctype="multipart/form-data">
         @csrf
@@ -193,6 +206,10 @@
                 <input type="number" name="price" id="edit_price" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
             <div>
+                <label for="edit_reference" class="block text-sm font-medium text-gray-700">Référence</label>
+                <input type="text" name="reference" id="edit_reference" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+            <div>
                 <label for="edit_status" class="block text-sm font-medium text-gray-700">Statut</label>
                 <select name="status" id="edit_status" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
                     <option value="available">Disponible</option>
@@ -201,12 +218,12 @@
                 </select>
             </div>
             <div>
-                <label for="edit_image" class="block text-sm font-medium text-gray-700">Image</label>
-                <input type="file" name="image" id="edit_image" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100">
+                <label for="edit_images" class="block text-sm font-medium text-gray-700">Images</label>
+                <input type="file" name="images[]" id="edit_images" multiple class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100">
             </div>
-            <div id="current_image_container" class="mt-2">
-                <p class="text-sm text-gray-500">Image actuelle:</p>
-                <img id="current_image" src="" alt="Image actuelle" class="mt-2 h-24 w-24 object-cover rounded-md">
+            <div id="current_images_container" class="mt-2">
+                <p class="text-sm text-gray-500">Images actuelles:</p>
+                <div id="current_images" class="grid grid-cols-3 gap-2 mt-2"></div>
             </div>
         </div>
     </form>
@@ -221,6 +238,7 @@
     </x-slot>
 </x-modal>
 
+<!-- Delete Modal -->
 <x-modal id="deleteModal" title="Confirmer la suppression">
     <p class="text-sm text-gray-500">Êtes-vous sûr de vouloir supprimer ce terrain? Cette action est irréversible.</p>
     
@@ -238,4 +256,59 @@
         </button>
     </x-slot>
 </x-modal>
-@endsection 
+
+@endsection
+
+@push('scripts')
+<script>
+    function openEditModal(id) {
+        // Fetch property data
+        fetch(`/admin/properties/${id}/edit`)
+            .then(response => response.json())
+            .then(data => {
+                // Set form action
+                document.getElementById('editForm').action = `/admin/properties/${id}`;
+                
+                // Fill form fields
+                document.getElementById('edit_title').value = data.title;
+                document.getElementById('edit_description').value = data.description;
+                document.getElementById('edit_location').value = data.location;
+                document.getElementById('edit_surface_area').value = data.surface_area;
+                document.getElementById('edit_price').value = data.price;
+                document.getElementById('edit_reference').value = data.reference;
+                document.getElementById('edit_status').value = data.status;
+                
+                // Display current images
+                const imagesContainer = document.getElementById('current_images');
+                imagesContainer.innerHTML = '';
+                
+                if (data.images && data.images.length > 0) {
+                    data.images.forEach(image => {
+                        const imgDiv = document.createElement('div');
+                        imgDiv.className = 'relative';
+                        
+                        const img = document.createElement('img');
+                        img.src = image;
+                        img.className = 'h-24 w-24 object-cover rounded-md';
+                        imgDiv.appendChild(img);
+                        
+                        imagesContainer.appendChild(imgDiv);
+                    });
+                } else {
+                    imagesContainer.innerHTML = '<p class="text-sm text-gray-500">Aucune image</p>';
+                }
+                
+                // Show modal
+                document.getElementById('editModal').classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Error fetching property data:', error);
+            });
+    }
+    
+    function openDeleteModal(id) {
+        document.getElementById('deleteForm').action = `/admin/properties/${id}`;
+        document.getElementById('deleteModal').classList.remove('hidden');
+    }
+</script>
+@endpush 

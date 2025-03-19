@@ -136,6 +136,15 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('dashboard');
         Route::get('/terrains', [AdminPropertyController::class, 'index'])->name('terrains');
+        
+        // Add these new routes for property CRUD operations
+        Route::get('/properties/create', [AdminPropertyController::class, 'create'])->name('properties.create');
+        Route::post('/properties', [AdminPropertyController::class, 'store'])->name('properties.store');
+        Route::get('/properties/{property}/edit', [AdminPropertyController::class, 'edit'])->name('properties.edit');
+        Route::put('/properties/{property}', [AdminPropertyController::class, 'update'])->name('properties.update');
+        Route::delete('/properties/{property}', [AdminPropertyController::class, 'destroy'])->name('properties.destroy');
+        
+        // Existing routes
         Route::get('/maisons', [AdminController::class, 'maisons'])->name('maisons');
         Route::get('/topographie', [AdminController::class, 'topographie'])->name('topographie');
         Route::get('/btp', [AdminController::class, 'btp'])->name('btp');
